@@ -69,10 +69,10 @@ https://vujade.co/install-apache-airflow-ubuntu-18-04/
 Here is short version:  
 
 sudo apt install python3-pip  
-sudo pip3 install apache-airflow  
+sudo pip3 install apache-airflow
 sudo pip3 install flask  
-airflow initdb  
-sed -i 's/load_examples = True/load_examaples = False/g' airflow/airflow.cfg  
+airflow scheduler  -> return error but it will create airflow.cfg file :-)
+sed -i 's/load_examples = True/load_examples = False/g' airflow/airflow.cfg  
 airflow initdb  
 airflow webserver -p 8080  
 airflow scheduler  
