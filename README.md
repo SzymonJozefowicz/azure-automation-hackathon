@@ -72,7 +72,7 @@ sudo apt install python3-pip
 sudo pip3 install apache-airflow  
 sudo pip3 install flask  
 airflow initdb  
-sed -i 's/load_examples = True/nload_examaples = False/g' airflow/airflow.cfg  
+sed -i 's/load_examples = True/load_examaples = False/g' airflow/airflow.cfg  
 airflow initdb  
 airflow webserver -p 8080  
 airflow scheduler  
