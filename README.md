@@ -62,21 +62,34 @@ To run code you need to provide environment variables
 5. Run terraform plan
 6. Run terraform apply
 
-How to install Airflow  
+# How to install Airflow  
 https://airflow.apache.org/installation.html  
 https://vujade.co/install-apache-airflow-ubuntu-18-04/  
 
-How to install Cronicle
+Here is short version:  
+
+sudo apt install python3-pip  
+sudo pip3 install apache-airflow  
+sudo pip3 install flask  
+airflow initdb  
+sed -i 's/load_examples = True/nload_examaples = False/g' airflow/airflow.cfg  
+airflow initdb  
+airflow webserver -p 8080  
+airflow scheduler  
+
+
+# How to install Cronicle
 https://github.com/jhuckaby/Cronicle
 
 Cronicle needs to be installed as root.
 
+Here is short version:
 sudo su -  
 apt install npm  
 curl -s https://raw.githubusercontent.com/jhuckaby/Cronicle/master/bin/install.js | node  
 /opt/cronicle/bin/control.sh setup  
 /opt/cronicle/bin/control.sh start  
-http://YOUR_SERVER_HOSTNAME:3012  
+http://YOUR_SERVER_IP:3012  
 
 
 After hackathon we will run terraform destroy to clean up Azure.
