@@ -35,19 +35,24 @@ We'd like to test applications:
 -	Cronicle
 -	Any other tool you like to verify
 
+
+
+
 # Installation instruction
 Prerequisits:
 CLI in Portal.azure.com or if you like to run it from your computer:
 - Install Azure CLI - https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest
 - Install Terraform - https://www.terraform.io/downloads.html
+- Install Putty     - https://www.putty.org/  
+- Optional VS Code  - https://code.visualstudio.com/ with extensions you like  
 
 Code to create entire environment is available in terraform.
 To run code you need to provide environment variables
--	TF_VAR_SUBSCRIPTION_ID - sandbox subscription id
--	TF_VAR_ADMIN_USERNAME - admin user name
--	TF_VAR_ADMIN_PASSWORD - admin password ( can be taken from key vault )
--	TF_VAR_resource_group - resource group
--	TF_VAR_prefix         - name of prefix for resources like Vms, disks etc
+-	TF_VAR_SUBSCRIPTION_ID  - sandbox subscription id
+-	TF_VAR_ADMIN_USERNAME   - admin user name
+-	TF_VAR_ADMIN_PASSWORD   - admin password ( can be taken from key vault )
+-	TF_VAR_resource_group   - resource group
+-	TF_VAR_prefix           - name of prefix for resources like Vms, disks etc
 
 
 1. To install create a folder which you like to use for terraform.
