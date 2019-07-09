@@ -55,14 +55,12 @@ To run code you need to provide environment variables
 -	TF_VAR_prefix           - name of prefix for resources like Vms, disks etc
 
 
-1. To install create a folder which you like to use for terraform.
-2. Run curl https://github.com/SzymonJozefowicz/azure-automation-hackathon/raw/master/code/main.tf and save a code in folder you choose.
-3. Decompress code.zip file
+1. To install create a folder which you like to use for Terraform.
+2. Run curl https://raw.githubusercontent.com/SzymonJozefowicz/azure-automation-hackathon/master/code/terraform/main.tf -o main.tf and save a code in folder you choose.
 3. Login to Azure using az login
 4. Run terraform init
 5. Run terraform plan
 6. Run terraform apply
-
 
 How to install Airflow  
 https://airflow.apache.org/installation.html  
@@ -79,9 +77,6 @@ curl -s https://raw.githubusercontent.com/jhuckaby/Cronicle/master/bin/install.j
 /opt/cronicle/bin/control.sh setup  
 /opt/cronicle/bin/control.sh start  
 http://YOUR_SERVER_HOSTNAME:3012  
-
-
-
 
 
 After hackathon we will run terraform destroy to clean up Azure.
