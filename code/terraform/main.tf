@@ -8,16 +8,12 @@
 variable "SUBSCRIPTION_ID" {}
 variable "ADMIN_USERNAME" {}
 variable "ADMIN_PASSWORD" {}
+variable "PREFIX" {}
+variable "RESOURCE_GROUP" {}
+
 
 #Name of resource group where resources will be created
 
-variable "prefix" {
-  description = "The Prefix used for all resources in this example.In case of VM it can be VM Name"
-}
-
-variable "resource_group" {
-  description = "The Azure Resource group"
-}
 
 #Location where resource will be created
 variable "location" {
@@ -67,10 +63,12 @@ variable "tags" {
 
 #Local values
 locals {
-  subscription_id      = "${var.SUBSCRIPTION_ID}"
-  virtual_machine_name = "${var.prefix}"
-  admin_username       = "${var.ADMIN_USERNAME}"
-  admin_password       = "${var.ADMIN_PASSWORD}"
+  subscription_id       = "${var.SUBSCRIPTION_ID}"
+  virtual_machine_name  = "${var.prefix}"
+  admin_username        = "${var.ADMIN_USERNAME}"
+  admin_password        = "${var.ADMIN_PASSWORD}"
+  prefix		= "${var.PREFIX}"
+  resource_group	= "${var.RESOURCE_GROUP}"
 
 }
 
@@ -101,6 +99,10 @@ resource "azurerm_resource_group" "resource_group" {
   name     = "${var.resource_group}"
   location = "${var.location}"
   tags     = "${var.tags}"
+}
+
+output "resource_group_name" {
+  value = "${azurerm_resource_group.resource_group.name}"
 }
 
 #==============================================================================================
@@ -220,6 +222,13 @@ os_profile_linux_config {
   tags = "${var.tags}"
 }
 
+output "vms_name" {
+  value = "${azurerm_virtual_machine.vm.*.name}"
+}
+
+output "private_ip_addresses" {
+  value = "${azurerm_network_interface.vmnic.*.private_ip_address}"
+}
 
 
 #==============================================================================================
@@ -233,6 +242,12 @@ resource "azurerm_automation_account" "aa" {
   sku_name	      = "Basic"
   tags = "${var.tags}"
 }
+
+output "aa_name" {
+  value = "${azurerm_automation_account.aa.name}"
+}
+
+
 
 resource "azurerm_automation_schedule" "one-time" {
   name                    = "${var.prefix}-one-time"
@@ -261,6 +276,11 @@ resource "azurerm_logic_app_workflow" "example" {
   resource_group_name = "${azurerm_resource_group.resource_group.name}"
   tags = "${var.tags}"
 }
+
+output "la_name" {
+  value = "${azurerm_logic_app_workflow.example.name}"
+}
+
 
 resource "azurerm_logic_app_trigger_recurrence" "hourly" {
   name         = "run-every-hour"
