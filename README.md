@@ -51,8 +51,8 @@ To run code you need to provide environment variables
 -	TF_VAR_SUBSCRIPTION_ID  - sandbox subscription id
 -	TF_VAR_ADMIN_USERNAME   - admin user name
 -	TF_VAR_ADMIN_PASSWORD   - admin password ( can be taken from key vault )
--	TF_VAR_resource_group   - resource group
--	TF_VAR_prefix           - name of prefix for resources like Vms, disks etc
+-	TF_VAR_RESOURCE_GROUP   - resource group
+-	TF_VAR_PREFIX           - name of prefix for resources like Vms, disks etc
 
 
 1. To install create a folder which you like to use for Terraform.
