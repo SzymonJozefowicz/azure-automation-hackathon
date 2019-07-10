@@ -36,7 +36,7 @@ variable "network_name" {
 #Name of virtual network subnet
 variable "network_subnet" {
   description = "The Azure Netowrk subnet"
-  default="sanbox2"
+  default="sandbox3"
 }
 
 #Global tags which will be assigned to all resources
