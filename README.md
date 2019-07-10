@@ -19,11 +19,20 @@ Goal is to come up with solution for automation tool which will be best for us t
 - d.	Ubuntu Server No 4 - Airflow machine
 - e.	Ubuntu Server No 5 - Cronicle machine
 
+
+
+
 2.	Create automation based on tags or other available to user method to:
-3.	Start Ubuntu Server No 1 at desired time,day,weekday,month,year etc. for eg. 7:30 AM CET. 
-4.	Start Ubuntu Server No 2 only if Ubuntu Server No 3 is running.
-5.	Stop Ubuntu Server No 1 at desired time, day, weekday, month, year etc. for eg. 7:30 PM CET. 
-6.	Start Ubuntu Server No 3 only if Ubuntu Server No 2 is stopped.
+
+Start time : every Weekday 7:30 AM   
+Stop time  : every day 7:30 PM  
+Start Ubuntu Server No 1 at desired time,day,weekday,month,year etc. for eg. 7:30 AM CET.  
+Stop Ubuntu Server No 1 at desired time, day, weekday, month, year etc. for eg. 7:30 PM CET.  
+
+#3.	Start Ubuntu Server No 1 at desired time,day,weekday,month,year etc. for eg. 7:30 AM CET. 
+#4.	Start Ubuntu Server No 2 only if Ubuntu Server No 3 is running.
+#5.	Stop Ubuntu Server No 1 at desired time, day, weekday, month, year etc. for eg. 7:30 PM CET. 
+#6.	Start Ubuntu Server No 3 only if Ubuntu Server No 2 is stopped.
 7.	Monitor execution
 8.	Check if manual process is possible in case of emergency
 9.	AOB
