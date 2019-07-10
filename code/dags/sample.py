@@ -22,8 +22,14 @@ start = DummyOperator(
     dag=dag,
 )
 
-vm_run = BashOperator(
-    task_id='vm_run',
+vm_run_1 = BashOperator(
+    task_id='vm_run_1',
+    bash_command='az --help ',
+    dag=dag,
+)
+
+vm_run_2 = BashOperator(
+    task_id='vm_run_2',
     bash_command='az --help ',
     dag=dag,
 )
@@ -33,5 +39,5 @@ end = DummyOperator(
     dag=dag,
 )
 
-start >> vm_run >> stop
+start >> vm_run_1 >> vm_run_2 >> end
 
