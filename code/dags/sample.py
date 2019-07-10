@@ -11,7 +11,7 @@ args = {
 }
 
 dag = DAG(
-    dag_id='example_bash_operator',
+    dag_id='azure_automation_sample',
     default_args=args,
     schedule_interval='0 0 * * *',
     dagrun_timeout=timedelta(minutes=60),
@@ -33,5 +33,5 @@ end = DummyOperator(
     dag=dag,
 )
 
-start >> vm_run >>stop
+start >> vm_run >> stop
 
