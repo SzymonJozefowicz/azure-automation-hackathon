@@ -64,11 +64,11 @@ variable "tags" {
 #Local values
 locals {
   subscription_id       = "${var.SUBSCRIPTION_ID}"
-  virtual_machine_name  = "${var.prefix}"
+  virtual_machine_name  = "${var.PREFIX}"
   admin_username        = "${var.ADMIN_USERNAME}"
   admin_password        = "${var.ADMIN_PASSWORD}"
-  prefix		= "${var.PREFIX}"
-  resource_group	= "${var.RESOURCE_GROUP}"
+  prefix		            = "${var.PREFIX}"
+  resource_group	      = "${var.RESOURCE_GROUP}"
 
 }
 
@@ -96,7 +96,7 @@ output "current_subscription_display_name" {
 #==============================================================================================
 
 resource "azurerm_resource_group" "resource_group" {
-  name     = "${var.resource_group}"
+  name     = "${local.resource_group}"
   location = "${var.location}"
   tags     = "${var.tags}"
 }
@@ -153,7 +153,7 @@ resource "azurerm_network_security_group" "nsg" {
 # create a network interface
 resource "azurerm_network_interface" "vmnic" {
   count               = 5
-  name                = "${var.prefix}-${count.index}-nic"
+  name                = "${local.prefix}-${count.index}-nic"
   location            = "${var.location}"
   resource_group_name = "${azurerm_resource_group.resource_group.name}"
   network_security_group_id="${azurerm_network_security_group.nsg.id}"
@@ -236,7 +236,7 @@ output "private_ip_addresses" {
 #==============================================================================================
 
 resource "azurerm_automation_account" "aa" {
-  name                = "${var.prefix}-aa"
+  name                = "${local.prefix}-aa"
   location            = "${azurerm_resource_group.resource_group.location}"
   resource_group_name = "${azurerm_resource_group.resource_group.name}"
   sku_name	      = "Basic"
@@ -250,7 +250,7 @@ output "aa_name" {
 
 
 resource "azurerm_automation_schedule" "one-time" {
-  name                    = "${var.prefix}-one-time"
+  name                    = "${local.prefix}-one-time"
   resource_group_name     = "${azurerm_resource_group.resource_group.name}"
   automation_account_name = "${azurerm_automation_account.aa.name}"
   frequency               = "OneTime"
@@ -258,7 +258,7 @@ resource "azurerm_automation_schedule" "one-time" {
 }
 
 resource "azurerm_automation_schedule" "hour" {
-  name                    = "${var.prefix}-hour"
+  name                    = "${local.prefix}-hour"
   resource_group_name     = "${azurerm_resource_group.resource_group.name}"
   automation_account_name = "${azurerm_automation_account.aa.name}"
   frequency               = "Hour"
@@ -271,7 +271,7 @@ resource "azurerm_automation_schedule" "hour" {
 #==============================================================================================
 
 resource "azurerm_logic_app_workflow" "example" {
-  name                = "${var.prefix}-logicapp"
+  name                = "${local.prefix}-logicapp"
   location            = "${azurerm_resource_group.resource_group.location}"
   resource_group_name = "${azurerm_resource_group.resource_group.name}"
   tags = "${var.tags}"
