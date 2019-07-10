@@ -86,6 +86,21 @@ airflow initdb
 airflow webserver -p 8080  
 airflow scheduler  
 
+# AZ CLI install
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
+
+# Powershell install
+
+
+wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb   
+sudo dpkg -i packages-microsoft-prod.deb  
+sudo apt-get update  
+sudo add-apt-repository universe  
+sudo apt-get install -y powershell   
+pwsh  
+
+
 
 # How to install Cronicle
 https://github.com/jhuckaby/Cronicle
