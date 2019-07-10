@@ -36,7 +36,7 @@ variable "network_name" {
 #Name of virtual network subnet
 variable "network_subnet" {
   description = "The Azure Netowrk subnet"
-  default="sandbox"
+  default="sanbox2"
 }
 
 #Global tags which will be assigned to all resources
@@ -152,7 +152,7 @@ resource "azurerm_network_security_group" "nsg" {
 
 # create a network interface
 resource "azurerm_network_interface" "vmnic" {
-  count               = 5
+  count               = 3
   name                = "${local.prefix}-${count.index}-nic"
   location            = "${var.location}"
   resource_group_name = "${azurerm_resource_group.resource_group.name}"
@@ -176,7 +176,7 @@ resource "azurerm_network_interface" "vmnic" {
 
 
 resource "azurerm_virtual_machine" "vm" {
-  count                 = 5
+  count                 = 3
   name                  = "${local.virtual_machine_name}-${count.index}"
   location              = "${azurerm_resource_group.resource_group.location}"
   resource_group_name   = "${azurerm_resource_group.resource_group.name}"
